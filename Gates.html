@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logic Gate Grid</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .gate {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+
+    .gate-label {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .switch {
+      width: 60px;
+      height: 30px;
+      margin: 5px;
+      font-size: 14px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .off {
+      background-color: red;
+    }
+
+    .on {
+      background-color: green;
+    }
+
+    .output {
+      width: 60px;
+      height: 30px;
+      margin: 10px auto;
+      background-color: red;
+      border: 2px solid #333;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Logic Gate Grid</h1>
+
+  <div class="grid">
+    <!-- AND Gate -->
+    <div class="gate">
+      <div class="gate-label">AND</div>
+      <button id="andA" class="switch off">A</button>
+      <button id="andB" class="switch off">B</button>
+      <div id="andOutput" class="output"></div>
+    </div>
+
+    <!-- OR Gate -->
+    <div class="gate">
+      <div class="gate-label">OR</div>
+      <button id="orA" class="switch off">A</button>
+      <button id="orB" class="switch off">B</button>
+      <div id="orOutput" class="output"></div>
+    </div>
+
+    <!-- XOR Gate -->
+    <div class="gate">
+      <div class="gate-label">XOR</div>
+      <button id="xorA" class="switch off">A</button>
+      <button id="xorB" class="switch off">B</button>
+      <div id="xorOutput" class="output"></div>
+    </div>
+
+    <!-- NOT Gate -->
+    <div class="gate">
+      <div class="gate-label">NOT (A)</div>
+      <button id="notA" class="switch off">A</button>
+      <div id="notOutput" class="output"></div>
+    </div>
+  </div>
+
+  <script>
+    let andA = false, andB = false;
+    let orA = false, orB = false;
+    let xorA = false, xorB = false;
+    let notA = false;
+
+    const andBtnA = document.getElementById('andA');
+    const andBtnB = document.getElementById('andB');
+    const andOutput = document.getElementById('andOutput');
+
+    const orBtnA = document.getElementById('orA');
+    const orBtnB = document.getElementById('orB');
+    const orOutput = document.getElementById('orOutput');
+
+    const xorBtnA = document.getElementById('xorA');
+    const xorBtnB = document.getElementById('xorB');
+    const xorOutput = document.getElementById('xorOutput');
+
+    const notBtnA = document.getElementById('notA');
+    const notOutput = document.getElementById('notOutput');
+
+    function updateAll() {
+      andBtnA.className = 'switch ' + (andA ? 'on' : 'off');
+      andBtnB.className = 'switch ' + (andB ? 'on' : 'off');
+      andOutput.style.backgroundColor = (andA && andB) ? 'green' : 'red';
+
+      orBtnA.className = 'switch ' + (orA ? 'on' : 'off');
+      orBtnB.className = 'switch ' + (orB ? 'on' : 'off');
+      orOutput.style.backgroundColor = (orA || orB) ? 'green' : 'red';
+
+      xorBtnA.className = 'switch ' + (xorA ? 'on' : 'off');
+      xorBtnB.className = 'switch ' + (xorB ? 'on' : 'off');
+      xorOutput.style.backgroundColor = (xorA !== xorB) ? 'green' : 'red';
+
+      notBtnA.className = 'switch ' + (notA ? 'on' : 'off');
+      notOutput.style.backgroundColor = (!notA) ? 'green' : 'red';
+    }
+
+    andBtnA.onclick = () => { andA = !andA; updateAll(); };
+    andBtnB.onclick = () => { andB = !andB; updateAll(); };
+
+    orBtnA.onclick = () => { orA = !orA; updateAll(); };
+    orBtnB.onclick = () => { orB = !orB; updateAll(); };
+
+    xorBtnA.onclick = () => { xorA = !xorA; updateAll(); };
+    xorBtnB.onclick = () => { xorB = !xorB; updateAll(); };
+
+    notBtnA.onclick = () => { notA = !notA; updateAll(); };
+
+    updateAll();
+  </script>
+
+</body>
+</html>
