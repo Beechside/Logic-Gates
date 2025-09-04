@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Logic Gate Grid</title>
+  <title>Logic Gate Grid with Icons</title>
   <style>
     body {
       font-family: sans-serif;
@@ -12,33 +12,36 @@
     }
 
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 600px;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 900px;
       margin: auto;
     }
 
-    .gate {
+    .gate-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       background: white;
-      padding: 10px;
-      border-radius: 10px;
+      padding: 10px 20px;
+      border-radius: 12px;
       box-shadow: 0 0 6px rgba(0,0,0,0.1);
     }
 
-    .gate-label {
-      font-weight: bold;
-      margin-bottom: 8px;
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .switch {
-      width: 60px;
-      height: 30px;
-      margin: 5px;
+      width: 80px;
+      height: 40px;
       font-size: 14px;
       border: none;
       color: white;
@@ -54,10 +57,15 @@
       background-color: green;
     }
 
+    .gate-icon {
+      width: 200px;
+      height: 100px;
+      object-fit: contain;
+    }
+
     .output {
-      width: 60px;
-      height: 30px;
-      margin: 10px auto;
+      width: 80px;
+      height: 40px;
       background-color: red;
       border: 2px solid #333;
       border-radius: 6px;
@@ -67,37 +75,45 @@
 </head>
 <body>
 
-  <h1>Logic Gate Grid</h1>
+  <h1>Logic Gate Demo</h1>
 
   <div class="grid">
     <!-- AND Gate -->
-    <div class="gate">
-      <div class="gate-label">AND</div>
-      <button id="andA" class="switch off">A</button>
-      <button id="andB" class="switch off">B</button>
+    <div class="gate-row">
+      <div class="inputs">
+        <button id="andA" class="switch off">A</button>
+        <button id="andB" class="switch off">B</button>
+      </div>
+      <img src="and-icon.png" alt="AND Gate" class="gate-icon">
       <div id="andOutput" class="output"></div>
     </div>
 
     <!-- OR Gate -->
-    <div class="gate">
-      <div class="gate-label">OR</div>
-      <button id="orA" class="switch off">A</button>
-      <button id="orB" class="switch off">B</button>
+    <div class="gate-row">
+      <div class="inputs">
+        <button id="orA" class="switch off">A</button>
+        <button id="orB" class="switch off">B</button>
+      </div>
+      <img src="or-icon.png" alt="OR Gate" class="gate-icon">
       <div id="orOutput" class="output"></div>
     </div>
 
     <!-- XOR Gate -->
-    <div class="gate">
-      <div class="gate-label">XOR</div>
-      <button id="xorA" class="switch off">A</button>
-      <button id="xorB" class="switch off">B</button>
+    <div class="gate-row">
+      <div class="inputs">
+        <button id="xorA" class="switch off">A</button>
+        <button id="xorB" class="switch off">B</button>
+      </div>
+      <img src="xor-icon.png" alt="XOR Gate" class="gate-icon">
       <div id="xorOutput" class="output"></div>
     </div>
 
     <!-- NOT Gate -->
-    <div class="gate">
-      <div class="gate-label">NOT (A)</div>
-      <button id="notA" class="switch off">A</button>
+    <div class="gate-row">
+      <div class="inputs">
+        <button id="notA" class="switch off">A</button>
+      </div>
+      <img src="not-icon.png" alt="NOT Gate" class="gate-icon">
       <div id="notOutput" class="output"></div>
     </div>
   </div>
